@@ -1,0 +1,21 @@
+﻿@model ProductManagement.Models.Product
+@{
+    ViewData["Title"] = "Product Details";
+}
+<div class="container py-4">
+    <h2>@Model.Name</h2>
+    <p><strong>Price:</strong> @String.Format("{0:C}", Model.Price)</p>
+    <p>@Model.Description</p>
+
+    <div class="row">
+        @foreach (var img in Model.Images)
+        {
+            <div class="col-md-3 mb-3">
+                <img src="@img.ImageUrl" class="img-fluid rounded" style="height:200px;object-fit:cover" />
+            </div>
+        }
+    </div>
+
+    <a class="btn btn-secondary" href="@Url.Action("Index")">Back</a>
+    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.Id })">Edit</a>
+</div>
